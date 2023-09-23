@@ -26,7 +26,7 @@ server <- function(input, output, session) {
   })
   
   # Filter the dataset
-  df_binge <- reactive({
+  df_obesity <- reactive({
     data <- df()
     filter(data, MeasureId == "OBESITY", Data_Value_Type == "Crude prevalence")
   })
