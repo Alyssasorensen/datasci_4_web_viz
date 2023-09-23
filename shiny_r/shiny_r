@@ -28,7 +28,7 @@ server <- function(input, output, session) {
     # Filter the dataset
     df_obesity <- reactive({
         data <- df()
-        filter(data, Measure == "obesity", Data_Value_Type == "Crude prevalence")
+        filter(data, Measure == "Obesity", Data_Value_Type == "Crude prevalence")
     })
     
     # Update county choices dynamically based on dataset
