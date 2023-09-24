@@ -1,8 +1,7 @@
-pip install shiny
-
 from shiny import App, render, ui
 import matplotlib.pyplot as plt
 import pandas as pd
+import ipywidgets as widgets  # Import ipywidgets
 
 # Load the dataset
 def load_data():
@@ -10,36 +9,50 @@ def load_data():
     return pd.read_csv(url)
 
 df = load_data()
-df_obesity = df[(df['MeasureId'] == 'OBESITY ') & (df['Data_Value_Type'] == 'Crude prevalence')]
 
-# Available counties for selection
-counties = df_obesity['LocationName'].unique()
+# Filter for 'OBESITY' as measureid and 'Crude prevalence' as data_value_type
+df = df[(df['MeasureId'] == 'OBESITY') & (df['Data_Value_Type'] == 'Crude prevalence')]
 
-app_ui = ui.page_fluid(
-    ui.input_select("county", "Select County", {county: county for county in counties}),
-    ui.output_text_verbatim("avg_data_value"),
-    ui.output_plot("bar_chart")
-)
+# Group by 'LocationName' and get the average (or sum) 'Data_Value'
+grouped = df.groupby('LocationName').Data_Value.mean().sort_values(ascending=False)
 
-def server(input, output, session):
+# Plotting
+plt.figure(figsize=(10, 7))
+grouped.plot(kind='bar', color='lightcoral')
+plt.ylabel('Average Data Value (Crude prevalence) - Percent')
+plt.xlabel('Location (County)')
+plt.title('Obesity Crude Prevalence by County in Alabama')
+plt.xticks(rotation=90)
+plt.tight_layout()
+plt.savefig("obesity_per_location.png")  # Saving the plot as an image
+plt.show()
 
-    @output
-    @render.text
-    def avg_data_value():
-        selected_county = input.county()
-        avg_value = df_obesity[df_obesity['LocationName'] == selected_county]['Data_Value'].mean()
-        return f"Average Obesity Crude Prevalence for {selected_county}: {avg_value:.2f}%"
-    @output
-    @render.plot(alt="Average Obesity Crude Prevalence Bar Chart")
-    def bar_chart():
-        overall_avg = df_obesity['Data_Value'].mean()
-        selected_county_avg = df_obesity[df_obesity['LocationName'] == input.county()]['Data_Value'].mean()
+# Compute the average data value across all counties
+avg_data_value = df['Data_Value'].mean()
 
-        fig, ax = plt.subplots(figsize=(10, 6))
-        ax.bar(['Selected County', 'Overall Average'], [selected_county_avg, overall_avg], color=['lightcoral', 'dodgerblue'])
-        
-        ax.set_ylabel('Data Value (Crude prevalence) - Percent')
-        ax.set_ylim(0, 30)
-        ax.set_title('Obesity Crude Prevalence Comparison')
-        
-        return fig
+# Sort the counties in ascending order for the dropdown list
+sorted_counties = sorted(df['LocationName'].unique())
+
+# Interactive selection of county for visualization using ipywidgets
+@widgets.interact(County=sorted_counties)
+def plot_data(County):
+    county_value = df[df['LocationName'] == County]['Data_Value'].values[0]
+
+    # Labels for bars
+    labels = [County, 'Average across all counties']
+
+    # Data values for bars
+    values = [county_value, avg_data_value]
+
+    plt.figure(figsize=(8, 6))
+
+    # Plot the bars
+    colors = ['lightcoral', 'lightblue']
+    plt.bar(labels, values, color=colors)
+
+    plt.ylabel('Data Value (Crude prevalence) - Percent')
+    plt.title(f'Obesity Crude Prevalence in {County} vs Average across all counties')
+
+    plt.tight_layout()
+    plt.show()
+
