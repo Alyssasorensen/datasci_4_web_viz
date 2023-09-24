@@ -1,3 +1,4 @@
+pip install shiny
 from shiny import App, render, ui
 import matplotlib.pyplot as plt
 import pandas as pd
