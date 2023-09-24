@@ -30,3 +30,42 @@ def server(input, output, session):
         return fig
 ```
 Before putting it altogether, in one code block, I separated the code. Once I placed it altogether the code ran successfully. This is because the "output" was now defined a few lines ahead. 
+#### Flask 
+The first challenge I encountered was when using Google Colab. I was using the code below and I kept getting an error message that stated "AssertionError: View function mapping is overwriting an existing endpoint function: index." Initially, I had the code in seperate code blocks and the error messaged continued to appear. Once I put the code altogether, the error message no longer appeared.  
+```
+app = Flask(__name__)
+
+# Load the dataset
+url = "https://raw.githubusercontent.com/Alyssasorensen/datasci_4_web_viz/main/datasets/PLACES__Local_Data_for_Better_Health__County_Data_2023_release%20(1).csv"
+df = pd.read_csv(url)
+df_obesity = df[(df['MeasureId'] == 'OBESITY') & (df['Data_Value_Type'] == 'Crude prevalence')]
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    counties = sorted(df_obesity['LocationName'].unique())
+    selected_county = request.form.get('county') or counties[0]
+    img = create_plot(selected_county)
+    
+    return render_template("index.html", counties=counties, selected_county=selected_county, img=img)
+
+def create_plot(county):
+    overall_avg = df_obesity['Data_Value'].mean()
+    selected_county_avg = df_obesity[df_obesity['LocationName'] == county]['Data_Value'].mean()
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.bar(['Selected County', 'Overall Average'], [selected_county_avg, overall_avg], color=['lightcoral', 'dodgerblue'])
+    ax.axhline(selected_county_avg, color='gray', linestyle='dashed', alpha=0.7)
+    ax.set_ylabel('Data Value (Crude prevalence) - Percent')
+    ax.set_ylim(0, 30)
+    ax.set_title('Obesity Crude Prevalence Comparison')
+    
+    # Convert plot to PNG image
+    img = io.BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    
+    return base64.b64encode(img.getvalue()).decode()
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
