@@ -55,4 +55,3 @@ def plot_data(County):
 
     plt.tight_layout()
     plt.show()
-
