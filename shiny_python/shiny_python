@@ -29,7 +29,6 @@ def server(input, output, session):
         selected_county = input.county()
         avg_value = df_obesity[df_obesity['LocationName'] == selected_county]['Data_Value'].mean()
         return f"Average Obesity Crude Prevalence for {selected_county}: {avg_value:.2f}%"
-
     @output
     @render.plot(alt="Average Obesity Crude Prevalence Bar Chart")
     def bar_chart():
