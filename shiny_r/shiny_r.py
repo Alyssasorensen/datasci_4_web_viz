@@ -50,7 +50,7 @@ server <- function(input, output, session) {
                  y = 'Data Value (Crude prevalence) - Percent',
                  x = 'Location (County)') +
             theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-            ylim(0, 30) +
+            ylim(0, 60) +
             scale_fill_manual(values = c("lightcoral", "dodgerblue"))
     })
     

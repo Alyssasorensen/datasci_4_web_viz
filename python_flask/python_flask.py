@@ -33,7 +33,7 @@ def create_plot(county):
     ax.bar(['Selected County', 'Overall Average'], [selected_county_avg, overall_avg], color=['lightcoral', 'dodgerblue'])
     ax.axhline(selected_county_avg, color='gray', linestyle='dashed', alpha=0.7)
     ax.set_ylabel('Data Value (Crude prevalence) - Percent')
-    ax.set_ylim(0, 30)
+    ax.set_ylim(0, 60)
     ax.set_title('Obesity Crude Prevalence Comparison')
     
     # Convert plot to PNG image
