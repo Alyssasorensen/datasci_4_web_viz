@@ -11,7 +11,7 @@ This code kept giving me the error message, "[WARNING] 2023-09-25T03:04:03+0000 
              Consider creating a requirements.txt file instead.
 Error: The nickname, "datasci_4_web_viz", does not exist." I was getting confused because the nickname for my Shiny R code is "datasci_4_web_viz." I tried different methods for shinyapps.io and spoke with my professor however, I was unsuccessfully able to deploy the Shiny app because of functionality issues with their application. The URL would appear on the my shinyapps.io dashboard, but when clicking on the URL the it would load with the message, "An error has occurred. The application exited before accepting connections. Contact the author for more information." Once I kept trying new methods, this error code also appeared, "[ERROR]: shinyapps.io reported an error (calling /v1/applications/): You have reached the maximum number of applications allowed for your account.
 Error: shinyapps.io reported an error (calling /v1/applications/): You have reached the maximum number of applications allowed for your account."  
-#### Python's Shiny ; Visualization: <img width="947" alt="Screenshot 2023-09-24 213943" src="https://github.com/Alyssasorensen/datasci_4_web_viz/assets/123602795/14e0ca1b-0f4c-4728-8b6a-c9c814a82b4f">
+#### Python's Shiny ; Visualization: <img width="947" alt="Screenshot 2023-09-24 213943" src="https://github.com/Alyssasorensen/datasci_4_web_viz/assets/123602795/14e0ca1b-0f4c-4728-8b6a-c9c814a82b4f"> <img width="944" alt="Screenshot 2023-09-24 213954" src="https://github.com/Alyssasorensen/datasci_4_web_viz/assets/123602795/913ebbac-ea8e-433a-b858-c77cbe4e99c5">
 
 The first challenge I encountered was Google Colab stating that within this code, the "ouput" was not defined. 
 ```
