@@ -1,7 +1,7 @@
 # datasci_4_web_viz
 ## HHA 507 Homework Assignment 4
 ### Challenges 
-#### Shiny R ; Visualization: https://2d5d69faeab24c34b3b00c2078443469.app.posit.cloud/p/bf5ce012/
+#### Shiny R; Visualization: https://2d5d69faeab24c34b3b00c2078443469.app.posit.cloud/p/bf5ce012/
 The first challenge I encountered occured when I was filtering the dataset. I had written "obesity" instead of "OBESITY" and this resulted in the counties not appearing in the drop-down box for the graph. The graph and the drop-down box appeared, but when trying to use the drop-down, to display the different counties to choose from, none of the counties were there. Once I changed the word "obesity," the drop-down box displayed all of the counties from my dataset. However, this is where I encountered my second challenge. The graph would not populate when setting the drop-down to a specific county. I tried each county and nothing would appear on the graph indicating a data point. My third challenge was the error code I kept receiving when trying to deploy my Shiny app on shinyapps.io.
 ```
 rsconnect deploy shiny ~/datasci_4_web_viz --name datasci_4_web_viz --title "My Shiny App"
@@ -11,7 +11,7 @@ This code kept giving me the error message, "[WARNING] 2023-09-25T03:04:03+0000 
              Consider creating a requirements.txt file instead.
 Error: The nickname, "datasci_4_web_viz", does not exist." I was getting confused because the nickname for my Shiny R code is "datasci_4_web_viz." I tried different methods for shinyapps.io and spoke with my professor however, I was unsuccessfully able to deploy the Shiny app because of functionality issues with their application. The URL would appear on the my shinyapps.io dashboard, but when clicking on the URL the it would load with the message, "An error has occurred. The application exited before accepting connections. Contact the author for more information." Once I kept trying new methods, this error code also appeared, "[ERROR]: shinyapps.io reported an error (calling /v1/applications/): You have reached the maximum number of applications allowed for your account.
 Error: shinyapps.io reported an error (calling /v1/applications/): You have reached the maximum number of applications allowed for your account."  
-#### Python's Shiny ; Visualization: <img width="947" alt="Screenshot 2023-09-24 213943" src="https://github.com/Alyssasorensen/datasci_4_web_viz/assets/123602795/14e0ca1b-0f4c-4728-8b6a-c9c814a82b4f"> <img width="944" alt="Screenshot 2023-09-24 213954" src="https://github.com/Alyssasorensen/datasci_4_web_viz/assets/123602795/913ebbac-ea8e-433a-b858-c77cbe4e99c5">
+#### Python's Shiny; Visualization: <img width="947" alt="Screenshot 2023-09-24 213943" src="https://github.com/Alyssasorensen/datasci_4_web_viz/assets/123602795/14e0ca1b-0f4c-4728-8b6a-c9c814a82b4f"> <img width="944" alt="Screenshot 2023-09-24 213954" src="https://github.com/Alyssasorensen/datasci_4_web_viz/assets/123602795/913ebbac-ea8e-433a-b858-c77cbe4e99c5">
 
 The first challenge I encountered was Google Colab stating that within this code, the "ouput" was not defined. 
 ```
@@ -39,7 +39,7 @@ def server(input, output, session):
         return fig
 ```
 Before putting it altogether, in one code block, I separated the code. Once I placed it altogether the code ran successfully. This is because the "output" was now defined a few lines ahead. 
-#### Flask ; Visualization: https://5000-cs-750560197970-default.cs-us-east1-vpcf.cloudshell.dev/?authuser=0&redirectedPreviously=true  <img width="567" alt="image" src="https://github.com/Alyssasorensen/datasci_4_web_viz/assets/123602795/a7fb5d5e-b7a0-4f48-a58d-f644dcd15476">
+#### Flask; Visualization: https://5000-cs-750560197970-default.cs-us-east1-vpcf.cloudshell.dev/?authuser=0&redirectedPreviously=true  <img width="567" alt="image" src="https://github.com/Alyssasorensen/datasci_4_web_viz/assets/123602795/a7fb5d5e-b7a0-4f48-a58d-f644dcd15476">
 The first challenge I encountered was when using Google Colab. I was using the code below and I kept getting an error message that stated "AssertionError: View function mapping is overwriting an existing endpoint function: index." Initially, I had the code in seperate code blocks and the error messaged continued to appear. Once I put the code altogether, the error message no longer appeared.  
 ```
 app = Flask(__name__)
