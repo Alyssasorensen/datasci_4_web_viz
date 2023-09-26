@@ -9,7 +9,7 @@ rsconnect deploy shiny ~/datasci_4_web_viz --name datasci_4_web_viz --title "My 
 This code kept giving me the error message, "[WARNING] 2023-09-25T03:04:03+0000 Can't determine entrypoint; defaulting to 'app'
     Warning: Capturing the environment using 'pip freeze'.
              Consider creating a requirements.txt file instead.
-Error: The nickname, "datasci_4_web_viz", does not exist." I was getting confused because the nickname for my Shiny R code is "datasci_4_web_viz."
+Error: The nickname, "datasci_4_web_viz", does not exist." I was getting confused because the nickname for my Shiny R code is "datasci_4_web_viz." I tried different methods for shinyapps.io and spoke with my professor however, I was unsuccessfully able to deploy the Shiny app because of functionality issues with their application.  
 #### Python's Shiny 
 The first challenge I encountered was Google Colab stating that within this code, the "ouput" was not defined. 
 ```
