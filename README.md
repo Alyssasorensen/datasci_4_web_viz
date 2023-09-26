@@ -39,7 +39,7 @@ def server(input, output, session):
         return fig
 ```
 Before putting it altogether, in one code block, I separated the code. Once I placed it altogether the code ran successfully. This is because the "output" was now defined a few lines ahead. 
-#### Flask 
+#### Flask ; Visualization: https://5000-cs-750560197970-default.cs-us-east1-vpcf.cloudshell.dev/?authuser=0&redirectedPreviously=true  <img width="567" alt="image" src="https://github.com/Alyssasorensen/datasci_4_web_viz/assets/123602795/a7fb5d5e-b7a0-4f48-a58d-f644dcd15476">
 The first challenge I encountered was when using Google Colab. I was using the code below and I kept getting an error message that stated "AssertionError: View function mapping is overwriting an existing endpoint function: index." Initially, I had the code in seperate code blocks and the error messaged continued to appear. Once I put the code altogether, the error message no longer appeared.  
 ```
 app = Flask(__name__)
