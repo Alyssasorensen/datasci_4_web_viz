@@ -2,7 +2,14 @@
 ## HHA 507 Homework Assignment 4
 ### Challenges 
 #### Shiny R
-The first challenge I encountered occured when I was filtering the dataset. I had written "obesity" instead of "OBESITY" and this resulted in the counties not appearing in the drop-down box for the graph. The graph and the drop-down box appeared, but when trying to use the drop-down, to display the different counties to choose from, none of the counties were there. Once I changed the word "obesity," the drop-down box displayed all of the counties from my dataset. However, this is where I encountered my second challenge. The graph would not populate when setting the drop-down to a specific county. I tried each county and nothing would appear on the graph indicating a data point.     
+The first challenge I encountered occured when I was filtering the dataset. I had written "obesity" instead of "OBESITY" and this resulted in the counties not appearing in the drop-down box for the graph. The graph and the drop-down box appeared, but when trying to use the drop-down, to display the different counties to choose from, none of the counties were there. Once I changed the word "obesity," the drop-down box displayed all of the counties from my dataset. However, this is where I encountered my second challenge. The graph would not populate when setting the drop-down to a specific county. I tried each county and nothing would appear on the graph indicating a data point. My third challenge was the error code I kept receiving when trying to deploy my Shiny app on shinyapps.io.
+```
+rsconnect deploy shiny ~/datasci_4_web_viz --name datasci_4_web_viz --title "My Shiny App"
+```
+This code kept giving me the error message, "[WARNING] 2023-09-25T03:04:03+0000 Can't determine entrypoint; defaulting to 'app'
+    Warning: Capturing the environment using 'pip freeze'.
+             Consider creating a requirements.txt file instead.
+Error: The nickname, "datasci_4_web_viz", does not exist." I was getting confused because the nickname for my Shiny R code is "datasci_4_web_viz."
 #### Python's Shiny 
 The first challenge I encountered was Google Colab stating that within this code, the "ouput" was not defined. 
 ```
